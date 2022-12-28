@@ -1,7 +1,8 @@
-package evs.factory.fastmultiplicationapp
+package evs.factory.fastmultiplicationapp.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import evs.factory.fastmultiplicationapp.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
