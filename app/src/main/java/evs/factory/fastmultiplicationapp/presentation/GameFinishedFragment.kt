@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import evs.factory.fastmultiplicationapp.R
 import evs.factory.fastmultiplicationapp.databinding.FragmentGameFinishedBinding
 import evs.factory.fastmultiplicationapp.domain.entity.GameResult
 
@@ -46,6 +47,24 @@ class GameFinishedFragment : Fragment() {
         })
         binding.button7.setOnClickListener{
             retryGame()
+        }
+        with(binding){
+            textView10.text = String.format(
+                getString(R.string.fin_right),
+                gameResults.gameSettings.minCountOfRightAnswers
+            )
+            textView11.text = String.format(
+                getString(R.string.fin_score),
+                gameResults.countOfRightAnswers
+            )
+            textView12.text = String.format(
+                getString(R.string.fin_req),
+                gameResults.gameSettings.minPercentOfRightAnswers
+            )
+            textView13.text = String.format(
+                getString(R.string.fin_perc),
+                "fck u"
+            )
         }
     }
 

@@ -16,25 +16,25 @@
             android:id="@+id/textView10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Необходимое количество правильных ответов: %s" />
+            android:text="@string/fin_right" />
 
         <TextView
             android:id="@+id/textView11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ваш счет: %s" />
+            android:text="@string/fin_score" />
 
         <TextView
             android:id="@+id/textView12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Необходимый процент правильных ответов: %s" />
+            android:text="@string/fin_req" />
 
         <TextView
             android:id="@+id/textView13"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Процент правильных ответов: %s" />
+            android:text="@string/fin_perc" />
 
         <Button
             android:id="@+id/button7"

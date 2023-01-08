@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">FastMultiplicationApp</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="status_info">Правильных ответов %s (минимум %s)</string>
+    <string name="fin_right">Необходимое количество правильных ответов: %s</string>
+    <string name="fin_score">Ваш счет: %s</string>
+    <string name="fin_req">Необходимый процент правильных ответов: %s</string>
+    <string name="fin_perc">Процент правильных ответов: %s</string>
+
+
 </resources>
