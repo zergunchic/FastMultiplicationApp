@@ -21,8 +21,7 @@ import evs.factory.fastmultiplicationapp.domain.entity.Level
 class GameFragment : Fragment() {
     private lateinit var level:Level;
     private val model:GameViewModel by lazy{
-        ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.
-        getInstance(requireActivity().application))[GameViewModel::class.java]
+        ViewModelProvider(this, GameViewModelFactory(level,requireActivity().application))[GameViewModel::class.java]
     }
 
     private val tvOptions by lazy {
@@ -56,7 +55,6 @@ class GameFragment : Fragment() {
             super.onViewCreated(view, savedInstanceState)
             observeViewModel()
             setClickListenersOnOptions()
-            model.startGame(level)
         }
 
     private fun setClickListenersOnOptions(){
