@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.navigation.fragment.findNavController
 import evs.factory.fastmultiplicationapp.R
 import evs.factory.fastmultiplicationapp.databinding.FragmentWelcomeBinding
 
@@ -35,12 +36,16 @@ class WelcomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
+//fragment transaction
+//    private fun launchChooseLevelFragment(){
+//        requireActivity().supportFragmentManager.beginTransaction()
+//            .replace(R.id.main_container, ChooseLevelFragment.newInstance())
+//            .addToBackStack(ChooseLevelFragment.NAME)
+//            .commit()
+//    }
+//navigation
     private fun launchChooseLevelFragment(){
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.main_container, ChooseLevelFragment.newInstance())
-            .addToBackStack(ChooseLevelFragment.NAME)
-            .commit()
+        findNavController().navigate(R.id.action_welcomeFragment_to_chooseLevelFragment)
     }
 
     companion object{

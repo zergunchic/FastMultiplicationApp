@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import evs.factory.fastmultiplicationapp.R
 import evs.factory.fastmultiplicationapp.databinding.FragmentChooseLevelBinding
 import evs.factory.fastmultiplicationapp.domain.entity.Level
@@ -46,13 +47,20 @@ class ChooseLevelFragment : Fragment() {
         _binding = null
     }
 
+//    private fun startGameFragment(lvl: Level){
+//        requireActivity().supportFragmentManager
+//            .beginTransaction()
+//            .replace(R.id.main_container,GameFragment.newInstance(lvl))
+//            .addToBackStack(GameFragment.NAME)
+//            .commit()
+//    }
     private fun startGameFragment(lvl: Level){
-        requireActivity().supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.main_container,GameFragment.newInstance(lvl))
-            .addToBackStack(GameFragment.NAME)
-            .commit()
+        val args = Bundle().apply {
+            putParcelable(GameFragment.KEY_LEVEL, lvl)
+        }
+        findNavController().navigate(R.id.action_chooseLevelFragment_to_gameFragment, args)
     }
+
 
     companion object {
 

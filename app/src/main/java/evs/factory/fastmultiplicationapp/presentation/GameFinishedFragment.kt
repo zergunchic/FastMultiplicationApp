@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.navigation.fragment.findNavController
 import evs.factory.fastmultiplicationapp.R
 import evs.factory.fastmultiplicationapp.databinding.FragmentGameFinishedBinding
 import evs.factory.fastmultiplicationapp.domain.entity.GameResult
@@ -39,14 +40,14 @@ class GameFinishedFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().onBackPressedDispatcher
-            .addCallback(viewLifecycleOwner, object: OnBackPressedCallback(true){
-            override fun handleOnBackPressed() {
-                retryGame()
-            }
-        })
+//        requireActivity().onBackPressedDispatcher
+//            .addCallback(viewLifecycleOwner, object: OnBackPressedCallback(true){
+//            override fun handleOnBackPressed() {
+//                retryGame()
+//            }
+//        })
         binding.button7.setOnClickListener{
-            retryGame()
+            findNavController().popBackStack()
         }
         with(binding){
             textView10.text = String.format(
@@ -73,10 +74,10 @@ class GameFinishedFragment : Fragment() {
         _binding = null
     }
 
-    private fun retryGame(){
-        requireActivity().supportFragmentManager.popBackStack(GameFragment.NAME,
-            FragmentManager.POP_BACK_STACK_INCLUSIVE)
-    }
+//    private fun retryGame(){
+//        requireActivity().supportFragmentManager.popBackStack(GameFragment.NAME,
+//            FragmentManager.POP_BACK_STACK_INCLUSIVE)
+//    }
     companion object{
         private const val KEY_GAME_RESULT = "game_result"
 

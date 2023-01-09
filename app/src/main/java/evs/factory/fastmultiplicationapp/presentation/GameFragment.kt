@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import evs.factory.fastmultiplicationapp.R
 import evs.factory.fastmultiplicationapp.databinding.FragmentGameBinding
 import evs.factory.fastmultiplicationapp.databinding.FragmentGameFinishedBinding
@@ -115,16 +116,22 @@ class GameFragment : Fragment() {
             }
         }
 
-        private fun startGameFinishedFragment(gameResult: GameResult){
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.main_container,GameFinishedFragment.newInstance(gameResult))
-                .addToBackStack(null)
-                .commit()
-        }
+//        private fun startGameFinishedFragment(gameResult: GameResult){
+//            requireActivity().supportFragmentManager.beginTransaction()
+//                .replace(R.id.main_container,GameFinishedFragment.newInstance(gameResult))
+//                .addToBackStack(null)
+//                .commit()
+//        }
 
+    private fun startGameFinishedFragment(gameResult: GameResult){
+        val args = Bundle().apply {
+            putParcelable(NAME, gameResult)
+        }
+        findNavController().navigate(R.id.action_gameFragment_to_gameFinishedFragment, args)
+    }
         companion object{
         const val NAME = "GameFragment"
-        private const val KEY_LEVEL = "level"
+        const val KEY_LEVEL = "level"
 
         fun newInstance(level: Level):GameFragment{
             return GameFragment().apply {
