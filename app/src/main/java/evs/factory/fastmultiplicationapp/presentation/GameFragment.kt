@@ -12,6 +12,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import evs.factory.fastmultiplicationapp.R
 import evs.factory.fastmultiplicationapp.databinding.FragmentGameBinding
 import evs.factory.fastmultiplicationapp.databinding.FragmentGameFinishedBinding
@@ -20,9 +21,10 @@ import evs.factory.fastmultiplicationapp.domain.entity.GameSettings
 import evs.factory.fastmultiplicationapp.domain.entity.Level
 
 class GameFragment : Fragment() {
-    private lateinit var level:Level;
+    private val args by navArgs<GameFragmentArgs>()
+//    private lateinit var level:Level;
     private val model:GameViewModel by lazy{
-        ViewModelProvider(this, GameViewModelFactory(level,requireActivity().application))[GameViewModel::class.java]
+        ViewModelProvider(this, GameViewModelFactory(args.level,requireActivity().application))[GameViewModel::class.java]
     }
 
     private val tvOptions by lazy {
@@ -42,7 +44,7 @@ class GameFragment : Fragment() {
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
-            parseArgs()
+ //           parseArgs()
         }
         override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -110,11 +112,11 @@ class GameFragment : Fragment() {
             _binding = null
         }
 
-        private fun parseArgs(){
-            requireArguments().getParcelable<Level>(KEY_LEVEL)?.let {
-                level = it
-            }
-        }
+//        private fun parseArgs(){
+//            requireArguments().getParcelable<Level>(KEY_LEVEL)?.let {
+//                level = it
+//            }
+//        }
 
 //        private fun startGameFinishedFragment(gameResult: GameResult){
 //            requireActivity().supportFragmentManager.beginTransaction()
@@ -124,10 +126,11 @@ class GameFragment : Fragment() {
 //        }
 
     private fun startGameFinishedFragment(gameResult: GameResult){
-        val args = Bundle().apply {
-            putParcelable(NAME, gameResult)
-        }
-        findNavController().navigate(R.id.action_gameFragment_to_gameFinishedFragment, args)
+//        val args = Bundle().apply {
+//            putParcelable(NAME, gameResult)
+//        }
+//        findNavController().navigate(R.id.action_gameFragment_to_gameFinishedFragment, args)
+        findNavController().navigate(GameFragmentDirections.actionGameFragmentToGameFinishedFragment(gameResult))
     }
         companion object{
         const val NAME = "GameFragment"

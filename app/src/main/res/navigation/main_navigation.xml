@@ -33,10 +33,17 @@
             app:destination="@id/gameFinishedFragment"
             app:popUpTo="@id/gameFragment"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="level"
+            app:argType="evs.factory.fastmultiplicationapp.domain.entity.Level" />
     </fragment>
     <fragment
         android:id="@+id/gameFinishedFragment"
         android:name="evs.factory.fastmultiplicationapp.presentation.GameFinishedFragment"
         android:label="fragment_game_finished"
-        tools:layout="@layout/fragment_game_finished" />
+        tools:layout="@layout/fragment_game_finished" >
+        <argument
+            android:name="gameResults"
+            app:argType="evs.factory.fastmultiplicationapp.domain.entity.GameResult" />
+    </fragment>
 </navigation>

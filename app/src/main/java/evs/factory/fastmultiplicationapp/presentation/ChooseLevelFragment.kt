@@ -54,13 +54,17 @@ class ChooseLevelFragment : Fragment() {
 //            .addToBackStack(GameFragment.NAME)
 //            .commit()
 //    }
-    private fun startGameFragment(lvl: Level){
-        val args = Bundle().apply {
-            putParcelable(GameFragment.KEY_LEVEL, lvl)
-        }
-        findNavController().navigate(R.id.action_chooseLevelFragment_to_gameFragment, args)
-    }
-
+    //Without arguments navigation
+//    private fun startGameFragment(lvl: Level){
+//        val args = Bundle().apply {
+//            putParcelable(GameFragment.KEY_LEVEL, lvl)
+//        }
+//        findNavController().navigate(R.id.action_chooseLevelFragment_to_gameFragment, args)
+//    }
+    //Правильный способ передачи параметров с помощью навигации
+private fun startGameFragment(lvl: Level){
+    findNavController().navigate(ChooseLevelFragmentDirections.actionChooseLevelFragmentToGameFragment(lvl))
+}
 
     companion object {
 

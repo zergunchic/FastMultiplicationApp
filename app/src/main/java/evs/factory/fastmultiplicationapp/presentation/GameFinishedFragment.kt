@@ -8,12 +8,15 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import evs.factory.fastmultiplicationapp.R
 import evs.factory.fastmultiplicationapp.databinding.FragmentGameFinishedBinding
 import evs.factory.fastmultiplicationapp.domain.entity.GameResult
 
 class GameFinishedFragment : Fragment() {
 
+//    private lateinit var gameResults:GameResult
+    private val args by navArgs<GameFinishedFragmentArgs>()
     private lateinit var gameResults:GameResult
     private var _binding: FragmentGameFinishedBinding? = null
     private val binding: FragmentGameFinishedBinding
@@ -21,14 +24,14 @@ class GameFinishedFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        parseArgs()
+ //       parseArgs()
     }
 
-    private fun parseArgs() {
-        requireArguments().getParcelable<GameResult>(KEY_GAME_RESULT)?.let{
-            gameResults = it
-        }
-    }
+//    private fun parseArgs() {
+//        requireArguments().getParcelable<GameResult>(KEY_GAME_RESULT)?.let{
+//            gameResults = it
+//        }
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,6 +49,7 @@ class GameFinishedFragment : Fragment() {
 //                retryGame()
 //            }
 //        })
+        gameResults = args.gameResults
         binding.button7.setOnClickListener{
             findNavController().popBackStack()
         }
