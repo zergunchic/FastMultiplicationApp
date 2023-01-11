@@ -56,6 +56,8 @@ class GameFragment : Fragment() {
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
+            binding.viewModel = model
+            binding.lifecycleOwner = viewLifecycleOwner
             observeViewModel()
             setClickListenersOnOptions()
         }
@@ -76,31 +78,31 @@ class GameFragment : Fragment() {
                     tvOptions[i].text = it.options[i].toString()
                 }
             }
-            model.percentOfRightAnswers.observe(viewLifecycleOwner){
-                binding.progressBar.setProgress(it, true)
-            }
+//            model.percentOfRightAnswers.observe(viewLifecycleOwner){
+//                binding.progressBar.setProgress(it, true)
+//            }
             model.enoughCountOfRightAnswers.observe(viewLifecycleOwner){
                 binding.infoTxt.setTextColor(getColorByState(it))
             }
-            model.enoughPercentOfRightAnswers.observe(viewLifecycleOwner){
-                val color= getColorByState(it)
-                binding.progressBar.progressTintList = ColorStateList.valueOf(color)
-            }
+//            model.enoughPercentOfRightAnswers.observe(viewLifecycleOwner){
+//                val color= getColorByState(it)
+//                binding.progressBar.progressTintList = ColorStateList.valueOf(color)
+//            }
 
-            model.formattedTime.observe(viewLifecycleOwner){
-                binding.timer.text = it
-            }
+//            model.formattedTime.observe(viewLifecycleOwner){
+//                binding.timer.text = it
+//            }
 
-            model.minPercent.observe(viewLifecycleOwner){
-                binding.progressBar.secondaryProgress = it
-            }
+//            model.minPercent.observe(viewLifecycleOwner){
+//                binding.progressBar.secondaryProgress = it
+//            }
 
             model.gameResult.observe(viewLifecycleOwner){
                 startGameFinishedFragment(it)
             }
-            model.progressAnswers.observe(viewLifecycleOwner){
-                binding.infoTxt.text = it
-            }
+//            model.progressAnswers.observe(viewLifecycleOwner){
+//                binding.infoTxt.text = it
+//            }
         }
     private fun getColorByState(goodState: Boolean):Int{
         val colorResId = if(goodState)android.R.color.holo_green_light

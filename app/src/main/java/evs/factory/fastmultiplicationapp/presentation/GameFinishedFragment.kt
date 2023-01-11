@@ -53,24 +53,25 @@ class GameFinishedFragment : Fragment() {
         binding.button7.setOnClickListener{
             findNavController().popBackStack()
         }
-        with(binding){
-            textView10.text = String.format(
-                getString(R.string.fin_right),
-                gameResults.gameSettings.minCountOfRightAnswers
-            )
-            textView11.text = String.format(
-                getString(R.string.fin_score),
-                gameResults.countOfRightAnswers
-            )
-            textView12.text = String.format(
-                getString(R.string.fin_req),
-                gameResults.gameSettings.minPercentOfRightAnswers
-            )
-            textView13.text = String.format(
-                getString(R.string.fin_perc),
-                "fck u"
-            )
-        }
+        binding.gameResult = gameResults
+//        with(binding){
+//            textView10.text = String.format(
+//                getString(R.string.fin_right),
+//                gameResults.gameSettings.minCountOfRightAnswers
+//            )
+//            textView11.text = String.format(
+//                getString(R.string.fin_score),
+//                gameResults.countOfRightAnswers
+//            )
+//            textView12.text = String.format(
+//                getString(R.string.fin_req),
+//                gameResults.gameSettings.minPercentOfRightAnswers
+//            )
+//            textView13.text = String.format(
+//                getString(R.string.fin_perc),
+//                "fck u"
+//            )
+//        }
     }
 
     override fun onDestroy() {

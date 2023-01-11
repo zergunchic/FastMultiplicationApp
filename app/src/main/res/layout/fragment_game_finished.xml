@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="gameResult"
+            type="evs.factory.fastmultiplicationapp.domain.entity.GameResult" />
+    </data>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.GameFinishedFragment">
 
     <LinearLayout
@@ -16,19 +23,22 @@
             android:id="@+id/textView10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/fin_right" />
+            android:text="@string/fin_right"
+            app:requiredAnswers="@{gameResult.gameSettings.minCountOfRightAnswers}"/>
 
         <TextView
             android:id="@+id/textView11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/fin_score" />
+            android:text="@string/fin_score"
+            app:score="@{gameResult.countOfRightAnswers}"/>
 
         <TextView
             android:id="@+id/textView12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/fin_req" />
+            android:text="@string/fin_req"
+            app:requiredPercentage="@{gameResult.gameSettings.minPercentOfRightAnswers}"/>
 
         <TextView
             android:id="@+id/textView13"
@@ -46,3 +56,4 @@
     </LinearLayout>
 
 </FrameLayout>
+    </layout>
